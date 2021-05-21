@@ -1599,6 +1599,7 @@ static void tftp_sendfile(const struct formats *pf, struct tftphdr *oap, int oac
         timeout = rexmtval;
         (void)sigsetjmp(timeoutbuf, 1);
 
+        usleep(5000);
         r_timeout = timeout;
         if (send(peer, dp, size + 4, 0) != size + 4) {
             syslog(LOG_WARNING, "tftpd: write: %m");
